@@ -106,6 +106,10 @@ public class PersonajeService {
         Optional<Personaje> personaje = personajeRepository.findById(id);
         return personaje.orElse(null); // Esto no lanzará excepción
     }
+    public Personaje findByNombre(String nombre) {
+        Optional<Personaje> personaje = personajeRepository.findByNombre(nombre);
+        return personaje.orElse(null); // Esto no lanzará excepción
+    }
 
     //Buscar descripcion de un personaje por ID
     public String getDescripcionById(Long id){

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import com.HeroHub.HeroHub.responses.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -84,9 +85,30 @@ public class PersonajeController {
 //select * from personaje where  sort
 
     @PostMapping
-    public String  createPersonaje(@RequestBody Personaje personaje) {
-        personajeService.savePersonaje(personaje);
-        return "El persona ya ha sido creado";
+    public ResponseEntity<String> createPersonaje(@RequestBody Personaje personaje) {
+        try {
+            // Verifica si hay nombres relacionados
+            if (personaje.getNombresRelacionados() != null) {
+                List<Personaje> relaciones = personaje.getNombresRelacionados().stream()
+                        .map(nombre -> personajeService.findByNombre(nombre))
+                        .filter(Objects::nonNull) // Filtra los personajes encontrados
+                        .toList();
+
+                // Si algún nombre no existe
+                if (relaciones.isEmpty() && !personaje.getNombresRelacionados().isEmpty()) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                            .body("Error: No se encontraron los personajes relacionados proporcionados.");
+                }
+
+                personaje.setPersonajesRelacionados(relaciones);
+            }
+            personajeService.savePersonaje(personaje); //guarda BD
+            return ResponseEntity.ok("El personaje '" + personaje.getNombre() + "' ha sido creado exitosamente.");
+        } catch (Exception e) {
+            // Captura cualquier error y devuelve un mensaje con estado 500
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al crear el personaje: " + e.getMessage());
+        }
     }
 
     @GetMapping("/nombre/{nombre}")
