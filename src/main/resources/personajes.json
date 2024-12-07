@@ -1,0 +1,59 @@
+[
+  {
+    "nombre": "Thor",
+    "edad": 35,
+    "lugar": "Asgard",
+    "atributos": {
+      "poder": 90,
+      "inteligencia": 50,
+      "puedeVolar": true,
+      "economia": 40,
+      "fuerza": 85
+    },
+    "descripcion": "Un personaje con habilidades de dios.",
+    "peliculas": [
+      "https://pics.filmaffinity.com/Thor-119554650-large.jpg",
+      "https://pics.filmaffinity.com/Avengers-874823645-large.jpg"
+    ],
+    "nombresRelacionados": ["Iron Man", "Hulk"],
+    "popularity": 85.5
+  },
+  {
+    "nombre": "Iron Man",
+    "edad": 40,
+    "lugar": "Stark Tower",
+    "atributos": {
+      "poder": 70,
+      "inteligencia": 95,
+      "puedeVolar": true,
+      "economia": 100,
+      "fuerza": 65
+    },
+    "descripcion": "Un genio multimillonario.",
+    "peliculas": [
+      "https://pics.filmaffinity.com/Iron_Man-874823640-large.jpg",
+      "https://pics.filmaffinity.com/Avengers-874823645-large.jpg"
+    ],
+    "nombresRelacionados": ["Thor", "Capitán América"],
+    "popularity": 90.3
+  },
+  {
+    "nombre": "Hulk",
+    "edad": 67,
+    "lugar": "pene",
+    "atributos": {
+      "poder": 45,
+      "inteligencia": 95,
+      "puedeVolar": false,
+      "economia": 100,
+      "fuerza": 45
+    },
+    "descripcion": "fuertoko.",
+    "peliculas": [
+      "https://pics.filmaffinity.com/Iron_Man-874823640-large.jpg",
+      "https://pics.filmaffinity.com/Avengers-874823645-large.jpg"
+    ],
+    "nombresRelacionados": ["Thor"],
+    "popularity": 90.3
+  }
+]
