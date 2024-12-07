@@ -20,7 +20,7 @@ public class Personaje {
     private String descripcion;
     private int popularity;
 
-
+// Mangel estuvo aqui
 
     @Embedded
     private Atributos atributos;  // Los campos de Atributos se colocan en la tabla de Personaje en vez de ser una tabla
